@@ -87,7 +87,7 @@ typedef unsigned int            uint;
 ////////////////////////////////////////////////////////////////////////////////////////
 // macros
 
-#define MIN(a,b) 				((a) < (b))?(a):(b)
+#define MIN(a,b) 				((float)(a) < (float)(b))?(a):(b)
 #define MAX(a,b) 				((a) > (b))?(a):(b)
 #define MAKEWORD(low, high)		((uint16)(((uint8)(low)) | (((uint16)((uint8)(high))) << 8)))
 #define MAKEDWORD(low, high)	((uint32)(((uint16)(low)) | (((uint32)((uint16)(high))) << 16)))
