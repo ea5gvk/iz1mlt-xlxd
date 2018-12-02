@@ -78,7 +78,7 @@
 
 // DExtra
 #define DEXTRA_PORT                     30001                               // UDP port
-#define DEXTRA_KEEPALIVE_PERIOD         1                                   // in seconds
+#define DEXTRA_KEEPALIVE_PERIOD         3                                   // in seconds
 #define DEXTRA_KEEPALIVE_TIMEOUT        (DEXTRA_KEEPALIVE_PERIOD*10)        // in seconds
 
 // DPlus
@@ -106,7 +106,7 @@
 
 // DMRMmdvm
 #define DMRMMDVM_PORT                   62030                               // UDP port
-#define DMRMMDVM_KEEPALIVE_PERIOD       1                                  // in seconds
+#define DMRMMDVM_KEEPALIVE_PERIOD       10                                 // in seconds
 #define DMRMMDVM_KEEPALIVE_TIMEOUT      (DMRMMDVM_KEEPALIVE_PERIOD*10)      // in seconds
 #define DMRMMDVM_REFLECTOR_SLOT         DMR_SLOT2
 #define DMRMMDVM_REFLECTOR_COLOUR       1
