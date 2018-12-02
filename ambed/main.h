@@ -59,8 +59,8 @@
 
 // Transcoder server --------------------------------------------
 #define TRANSCODER_PORT                 10100                               // UDP port
-#define TRANSCODER_KEEPALIVE_PERIOD     5                                   // in seconds
-#define TRANSCODER_KEEPALIVE_TIMEOUT    30                                  // in seconds
+#define TRANSCODER_KEEPALIVE_PERIOD     1                                   // in seconds
+#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD*3)     // in seconds
 
 // Codecs -------------------------------------------------------
 #define CODEC_NONE                      0
@@ -68,11 +68,11 @@
 #define CODEC_AMBE2PLUS                 2
 
 // Transcoding speech gains
-#define CODECGAIN_AMBEPLUS              -10                                  // in dB
+#define CODECGAIN_AMBEPLUS              -10                                 // in dB
 #define CODECGAIN_AMBE2PLUS             +10                                 // in dB
 
 // Timeouts -----------------------------------------------------
-#define STREAM_ACTIVITY_TIMEOUT         3                                   // in seconds
+#define STREAM_ACTIVITY_TIMEOUT         TRANSCODER_KEEPALIVE_TIMEOUT        // in seconds
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
