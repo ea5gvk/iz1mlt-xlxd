@@ -49,7 +49,7 @@
 
 #define VERSION_MAJOR                   2
 #define VERSION_MINOR                   2
-#define VERSION_REVISION                2
+#define VERSION_REVISION                3
 
 // global ------------------------------------------------------
 
@@ -78,7 +78,7 @@
 
 // DExtra
 #define DEXTRA_PORT                     30001                               // UDP port
-#define DEXTRA_KEEPALIVE_PERIOD         3                                   // in seconds
+#define DEXTRA_KEEPALIVE_PERIOD         1                                   // in seconds
 #define DEXTRA_KEEPALIVE_TIMEOUT        (DEXTRA_KEEPALIVE_PERIOD*10)        // in seconds
 
 // DPlus
@@ -94,7 +94,7 @@
 // XLX
 #define XLX_PORT                        10002                               // UDP port
 #define XLX_KEEPALIVE_PERIOD            1                                   // in seconds
-#define XLX_KEEPALIVE_TIMEOUT           (XLX_KEEPALIVE_PERIOD*30)           // in seconds
+#define XLX_KEEPALIVE_TIMEOUT           (XLX_KEEPALIVE_PERIOD*10)           // in seconds
 #define XLX_RECONNECT_PERIOD            5                                   // in seconds
 
 // DMRPlus (dongle)
@@ -106,7 +106,7 @@
 
 // DMRMmdvm
 #define DMRMMDVM_PORT                   62030                               // UDP port
-#define DMRMMDVM_KEEPALIVE_PERIOD       10                                  // in seconds
+#define DMRMMDVM_KEEPALIVE_PERIOD       1                                  // in seconds
 #define DMRMMDVM_KEEPALIVE_TIMEOUT      (DMRMMDVM_KEEPALIVE_PERIOD*10)      // in seconds
 #define DMRMMDVM_REFLECTOR_SLOT         DMR_SLOT2
 #define DMRMMDVM_REFLECTOR_COLOUR       1
@@ -114,9 +114,9 @@
 // Transcoder server --------------------------------------------
 
 #define TRANSCODER_PORT                 10100                               // UDP port
-#define TRANSCODER_KEEPALIVE_PERIOD     5                                   // in seconds
-#define TRANSCODER_KEEPALIVE_TIMEOUT    30                                  // in seconds
-#define TRANSCODER_AMBEPACKET_TIMEOUT   600                                 // in ms
+#define TRANSCODER_KEEPALIVE_PERIOD     1                                   // in seconds
+#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD*3)     // in seconds
+#define TRANSCODER_AMBEPACKET_TIMEOUT   (TRANSCODER_KEEPALIVE_TIMEOUT*1000)  // in ms
 
 // codec --------------------------------------------------------
 
