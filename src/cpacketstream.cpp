@@ -27,6 +27,7 @@
 #include <cstring>
 
 ////////////////////////////////////////////////////////////////////////////////////////
+const char*         m_TranscoderModuleOn;
 // constructor
 
 CPacketStream::CPacketStream()
@@ -44,6 +45,7 @@ CPacketStream::CPacketStream()
 
 bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
 {
+	bool m_findmodule = false;
     bool ok = false;
     
     // not already open?
@@ -70,7 +72,7 @@ bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
             {
                 for ( unsigned int i = 0; i < strlen(m_TranscoderModuleOn); i++ )
                 {
-                    if( 'B' == m_TranscoderModuleOn[i] )
+                    if( DvHeader.GetRpt2Module() == m_TranscoderModuleOn[i] )
                     {
                         m_findmodule = true;
                     }

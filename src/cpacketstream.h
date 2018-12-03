@@ -74,8 +74,6 @@ protected:
     CTimePoint          m_LastPacketTime;
     CDvHeaderPacket     m_DvHeader;
     CCodecStream        *m_CodecStream;
-    const char*         m_TranscoderModuleOn;
-    bool                m_findmodule;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////
