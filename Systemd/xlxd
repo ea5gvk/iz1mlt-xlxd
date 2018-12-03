@@ -19,6 +19,8 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 # change below settings according to your system
 NAME="xlxd"
 DAEMON="/xlxd/xlxd"
+#          Callsign - ip macchine - ip ambed - module active-> ALL = all module transcoding NONE = no active transcoding "ABCDE" active transcoding  
+#example: ARGUMENTS="XLX123 158.64.26.132 127.0.0.1 ABC only module A,B,C active transcoding
 ARGUMENTS="XLX270 158.64.26.132 127.0.0.1 ALL"
 PIDFILE="/var/log/xlxd.pid"
 USER=root
