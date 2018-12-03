@@ -91,7 +91,7 @@ int main(int argc, const char * argv[])
     if ( argc != 5 )
     {
         std::cout << "Usage: xlxd callsign xlxdip ambedip" << std::endl;
-        std::cout << "example: xlxd XLX999 192.168.178.212 127.0.0.1" << std::endl;
+        std::cout << "example: xlxd XLX999 192.168.178.212 127.0.0.1 ALL" << std::endl;
         return 1;
     }
 
