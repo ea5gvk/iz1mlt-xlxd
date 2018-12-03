@@ -45,7 +45,7 @@ CPacketStream::CPacketStream()
 
 bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
 {
-	bool m_findmodule = false;
+    bool m_findmodule = false;
     bool ok = false;
     
     // not already open?
