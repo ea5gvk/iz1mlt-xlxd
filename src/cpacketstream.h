@@ -55,7 +55,8 @@ public:
     void Push(CPacket *);
     void Tickle(void)                               { m_LastPacketTime.Now(); }
     bool IsEmpty(void) const;
-    
+    void TranscoderModuleOn(const std::string TranscoderModuleOn );
+
     // get
     CClient         *GetOwnerClient(void)           { return m_OwnerClient; }
     const CIp       *GetOwnerIp(void);
@@ -73,6 +74,8 @@ protected:
     CTimePoint          m_LastPacketTime;
     CDvHeaderPacket     m_DvHeader;
     CCodecStream        *m_CodecStream;
+    const char*         m_TranscoderModuleOn;
+    bool                m_findmodule;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////

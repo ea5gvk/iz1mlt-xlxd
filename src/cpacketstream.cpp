@@ -24,6 +24,7 @@
 
 #include "main.h"
 #include "cpacketstream.h"
+#include <cstring>
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // constructor
@@ -35,6 +36,7 @@ CPacketStream::CPacketStream()
     m_uiPacketCntr = 0;
     m_OwnerClient = NULL;
     m_CodecStream = NULL;
+    m_findmodule = false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +56,32 @@ bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
         m_DvHeader = DvHeader;
         m_OwnerClient = client;
         m_LastPacketTime.Now();
-        m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
+
+        if ( m_TranscoderModuleOn[0] == 'N' && m_TranscoderModuleOn[1] == 'O' && m_TranscoderModuleOn[2] == 'N' && m_TranscoderModuleOn[3] == 'E' )
+        {
+            m_CodecStream = g_Transcoder.GetStream(this, CODEC_NONE);
+        }
+        else
+        {
+            if ( m_TranscoderModuleOn[0] == 'A' && m_TranscoderModuleOn[1] == 'L' && m_TranscoderModuleOn[2] == 'L' )
+               m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
+
+            else
+            {
+                for ( unsigned int i = 0; i < strlen(m_TranscoderModuleOn); i++ )
+                {
+                    if( 'B' == m_TranscoderModuleOn[i] )
+                    {
+                        m_findmodule = true;
+                    }
+                }
+                if ( m_findmodule )
+                    m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
+                else
+                    m_CodecStream = g_Transcoder.GetStream(this, CODEC_NONE);
+            }
+        }
+
         ok = true;
     }
     return ok;
@@ -68,6 +95,7 @@ void CPacketStream::Close(void)
     m_OwnerClient = NULL;
     g_Transcoder.ReleaseStream(m_CodecStream);
     m_CodecStream = NULL;
+    m_findmodule = false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -133,3 +161,7 @@ const CIp *CPacketStream::GetOwnerIp(void)
     return NULL;
 }
 
+void CPacketStream::TranscoderModuleOn( const std::string TranscoderModuleOn )
+{
+    m_TranscoderModuleOn = TranscoderModuleOn.c_str();
+}

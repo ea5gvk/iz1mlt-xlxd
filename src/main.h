@@ -192,6 +192,9 @@ extern CGateKeeper g_GateKeeper;
 class CTranscoder;
 extern CTranscoder g_Transcoder;
 
+class CPacketStream;
+extern CPacketStream g_PacketStream;
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 #endif /* main_h */
