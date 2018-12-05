@@ -98,7 +98,6 @@ void CPacketStream::Close(void)
     m_OwnerClient = NULL;
     g_Transcoder.ReleaseStream(m_CodecStream);
     m_CodecStream = NULL;
-    m_findmodule = false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
