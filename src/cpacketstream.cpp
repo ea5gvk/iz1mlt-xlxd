@@ -78,10 +78,10 @@ bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
                     }
                 }
                 if ( m_findmodule )
-				{
+                {
                     m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
-				    m_findmodule = false;
-				}
+                    m_findmodule = false;
+                }
                 else
                     m_CodecStream = g_Transcoder.GetStream(this, CODEC_NONE);
             }
