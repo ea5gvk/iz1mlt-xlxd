@@ -37,7 +37,6 @@ CPacketStream::CPacketStream()
     m_uiPacketCntr = 0;
     m_OwnerClient = NULL;
     m_CodecStream = NULL;
-    m_findmodule = false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +103,6 @@ void CPacketStream::Close(void)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // push & pop
-m_findmodulem_findmodule
 void CPacketStream::Push(CPacket *Packet)
 {
     // update stream dependent packet data
