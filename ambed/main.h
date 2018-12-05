@@ -54,13 +54,13 @@
 // global ------------------------------------------------------
 
 //#define RUN_AS_DAEMON
-#define NB_MAX_STREAMS                  99
+#define NB_MAX_STREAMS                  26
 //#define DEBUG_DUMPFILE
 
 // Transcoder server --------------------------------------------
 #define TRANSCODER_PORT                 10100                               // UDP port
-#define TRANSCODER_KEEPALIVE_PERIOD     1                                   // in seconds
-#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD*3)     // in seconds
+#define TRANSCODER_KEEPALIVE_PERIOD     2                                   // in seconds
+#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD + 1)   // in seconds
 
 // Codecs -------------------------------------------------------
 #define CODEC_NONE                      0

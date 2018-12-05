@@ -67,7 +67,7 @@ bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
         {
             if ( m_TranscoderModuleOn[0] == 'A' && m_TranscoderModuleOn[1] == 'L' && m_TranscoderModuleOn[2] == 'L' )
                m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
-
+		   
             else
             {
                 for ( unsigned int i = 0; i < strlen(m_TranscoderModuleOn); i++ )
@@ -78,12 +78,14 @@ bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
                     }
                 }
                 if ( m_findmodule )
+				{
                     m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
+				    m_findmodule = false;
+				}
                 else
                     m_CodecStream = g_Transcoder.GetStream(this, CODEC_NONE);
             }
         }
-
         ok = true;
     }
     return ok;
@@ -102,7 +104,7 @@ void CPacketStream::Close(void)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // push & pop
-
+m_findmodulem_findmodule
 void CPacketStream::Push(CPacket *Packet)
 {
     // update stream dependent packet data

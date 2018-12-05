@@ -1,7 +1,7 @@
 [Unit]
 Description=Ambed Service
 Requires=network.target
-After=systemd-user-session.service network.target
+After=syslog.target network.target
 
 [Service]
 Type=simple
@@ -11,9 +11,8 @@ StandardOutput=null
 WorkingDirectory=/ambed
 ExecStartPre=-/sbin/rmmod ftdi_sio
 ExecStartPre=-/sbin/rmmod usbserial
-ExecStart=/ambed/ambed 127.0.0.1
-ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
+ExecStart=/usr/bin/screen -S ambed -D -m /usr/local/bin/ambed 127.0.0.1
+ExecStop=/usr/bin/screen -S ambed -X quit
 
 [Install]
 WantedBy=multi-user.target
