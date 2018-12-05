@@ -57,25 +57,26 @@ bool CPacketStream::Open(const CDvHeaderPacket &DvHeader, CClient *client)
         m_DvHeader = DvHeader;
         m_OwnerClient = client;
         m_LastPacketTime.Now();
-
+	    
+        //I check if it is "NONE"
         if ( m_TranscoderModuleOn[0] == 'N' && m_TranscoderModuleOn[1] == 'O' && m_TranscoderModuleOn[2] == 'N' && m_TranscoderModuleOn[3] == 'E' )
         {
             m_CodecStream = g_Transcoder.GetStream(this, CODEC_NONE);
         }
         else
-        {
+        {  //I check if it is "ALL"
             if ( m_TranscoderModuleOn[0] == 'A' && m_TranscoderModuleOn[1] == 'L' && m_TranscoderModuleOn[2] == 'L' )
                m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
 		   
             else
-            {
+            { //Else find the form
                 for ( unsigned int i = 0; i < strlen(m_TranscoderModuleOn); i++ )
-                {
+                { 
                     if( DvHeader.GetRpt2Module() == m_TranscoderModuleOn[i] )
                     {
                         m_findmodule = true;
                     }
-                }
+                } //If you find it, active transcoding
                 if ( m_findmodule )
                 {
                     m_CodecStream = g_Transcoder.GetStream(this, client->GetCodec());
