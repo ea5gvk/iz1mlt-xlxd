@@ -28,7 +28,6 @@ This version of ambed is compatible with:
 - NWDR's ThumbDV-3 device
 - DVMEGA AMBE3000 device
 - DVMEGA AMBE3003 device
-- TEAM6160 AMBE3000 device
 Available transcoding channels per device:
 ```
 device			 DMR->DSTAR		DSTAR->DMR		Nb Of concurrent channels
@@ -44,6 +43,7 @@ Multiple devices can be used at the same time.
 You need to use 3000 by pairs or paired with a 3003
 Do not to use USB hubs as they have proven making
 system behaviour unreliable.
+
 Instructions:
 =============
 1) Installation of FTDI drivers
@@ -113,3 +113,34 @@ Command of start/stop/restart/status service
 # service ambed restart
 # service ambed status
 ```
+
+Configure ambed
+===============
+
+In main.h find all parameter to set AMBE end conettion UDP.
+
+```
+#define NB_MAX_STREAMS 99
+```
+This parameter defines the number of UDP communication active at the same time. 
+if I have an ambe board with 4 channels, the streaming streams in the counter will be channel / 2, 
+then 2 and the UDP ports used will be 10101 and 10102.
+It is useful if you do not want to open too many doors and only have the necessary.
+
+```
+// Transcoder server --------------------------------------------
+#define TRANSCODER_PORT                 10100                               // UDP port
+#define TRANSCODER_KEEPALIVE_PERIOD     2                                   // in seconds
+#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD + 1)   // in seconds
+```
+TRANSCODER_PORT should not be changed.
+TRANSCODER_KEEPALIVE_PERIOD can be modified, but be careful that it is also the same on xlxd.
+TRANSCODER_KEEPALIVE_TIMEOUT end of connection time.
+
+```
+// Transcoding speech gains
+#define CODECGAIN_AMBEPLUS      -10  // in dB
+#define CODECGAIN_AMBE2PLUS     +10  // in dB
+```
+CODECGAIN_AMBEPLUS and CODECGAIN_AMBE2PLUS are the gain levels, 
+it can be useful to vary them if there are differences between AMBE input and output.
