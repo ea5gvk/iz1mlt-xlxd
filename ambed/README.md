@@ -113,10 +113,6 @@ Command of start/stop/restart/status service
 # service ambed restart
 # service ambed status
 ```
-To see the correct operation type
-```
-# screen -r ambed
-```
 
 Configure ambed
 ===============
