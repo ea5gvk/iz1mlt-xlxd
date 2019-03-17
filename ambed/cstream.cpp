@@ -145,7 +145,7 @@ void CStream::Close(void)
         m_pThread = NULL;
     }
     
-	// then close everything
+    // then close everything
     m_Socket.Close();
     if ( m_VocodecChannel != NULL )
     {
