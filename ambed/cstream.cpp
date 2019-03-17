@@ -77,7 +77,7 @@ CStream::~CStream()
     {
         m_pThread->join();
         delete m_pThread;
-		m_pThread = NULL;
+        m_pThread = NULL;
     }
 	
     // then close everything
