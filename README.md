@@ -74,13 +74,14 @@ For Debian 7
 ```
 # pico /etc/init.d/xlxd
 ```
-###### Crontab the dmrid.dat from the XLXAPI server to your xlxd folder
+###### Crontab the dmrid.dat and ysfnode.dat from the XLXAPI server to your xlxd folder
 ```
 Open file:
 # nano /etc/crontab
  
 Add at the bottom of the file
 0 0    * * *   root    wget -O /xlxd/dmrid.dat http://xlxapi.rlx.lu/api/exportdmr.php
+0 0    * * *   root    wget -O /xlxd/ysfnode.dat http://xlxapi.rlx.lu/api/exportysfrepeaters.php 
 ```
 ###### Last step is to declare the service for automatic startup and shutdown
 ```
@@ -123,6 +124,7 @@ XLX Server requires the following ports to be open and forwarded properly for in
  - UDP port 10001         (json interface XLX Core)
  - UDP port 10002         (XLX interlink)
  - TCP port 22            (ssh) optional  TCP port 10022
+ - UDP port 42000         (YSF protocol)
  - UDP port 30001         (DExtra protocol)
  - UPD port 20001         (DPlus protocol)
  - UDP port 30051         (DCS protocol)

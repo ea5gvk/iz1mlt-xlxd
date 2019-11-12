@@ -184,7 +184,7 @@ void CTranscoder::Task(void)
                 std::cout << "Transcoder connected at " << Ip << std::endl;
             }
             m_bConnected = true;
-        }
+        }       
     }
     
     // keep client alive
