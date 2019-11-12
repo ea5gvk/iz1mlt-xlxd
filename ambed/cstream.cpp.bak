@@ -136,7 +136,7 @@ bool CStream::Init(uint16 uiPort)
 
 void CStream::Close(void)
 {
-    // stop thread first
+    // stop thread first   
     m_bStopThread = true;
     if ( m_pThread != NULL )
     {

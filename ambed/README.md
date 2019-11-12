@@ -1,21 +1,26 @@
 
     Created by Jean-Luc Deltombe (LX3JL) on 09/07/2017.
     Copyright © 2017 Jean-Luc Deltombe (LX3JL). All rights reserved.
+	
     ----------------------------------------------------------------------------- 
     This file is part of ambed.
+	
     xlxd is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
+	
     xlxd is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
+	
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  ----------------------------------------------------------------------------
 
-VERSION: 1.3.2
+VERSION: 1.3.4
+
 Hardware compatibility.
 ======================
 This version of ambed is compatible with:
@@ -28,6 +33,7 @@ This version of ambed is compatible with:
 - NWDR's ThumbDV-3 device
 - DVMEGA AMBE3000 device
 - DVMEGA AMBE3003 device
+
 Available transcoding channels per device:
 ```
 device			 DMR->DSTAR		DSTAR->DMR		Nb Of concurrent channels
@@ -35,7 +41,7 @@ device			 DMR->DSTAR		DSTAR->DMR		Nb Of concurrent channels
 3000(pair)		    1				1			2
 3003			    1				1			2
 3003(pair)		    3				3			4
-3003-3000(pair)	            2			        2		not tested
+3003-3000(pair)	2				2				4
 3006			    3				3			6
 3012			    6				6			12
 ```

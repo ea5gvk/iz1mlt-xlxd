@@ -49,7 +49,7 @@
 
 #define VERSION_MAJOR                   1
 #define VERSION_MINOR                   3
-#define VERSION_REVISION                3
+#define VERSION_REVISION                4
 
 // global ------------------------------------------------------
 
@@ -59,8 +59,8 @@
 
 // Transcoder server --------------------------------------------
 #define TRANSCODER_PORT                 10100                               // UDP port
-#define TRANSCODER_KEEPALIVE_PERIOD     2                                   // in seconds
-#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD + 1)   // in seconds
+#define TRANSCODER_KEEPALIVE_PERIOD     3                                   // in seconds
+#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD + 3)   // in seconds
 
 // Codecs -------------------------------------------------------
 #define CODEC_NONE                      0
@@ -68,7 +68,7 @@
 #define CODEC_AMBE2PLUS                 2
 
 // Transcoding speech gains
-#define CODECGAIN_AMBEPLUS              -10                                 // in dB
+#define CODECGAIN_AMBEPLUS              -10                                  // in dB
 #define CODECGAIN_AMBE2PLUS             +10                                 // in dB
 
 // Timeouts -----------------------------------------------------
