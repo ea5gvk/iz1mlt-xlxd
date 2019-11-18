@@ -49,7 +49,7 @@
 
 #define VERSION_MAJOR                   2
 #define VERSION_MINOR                   3
-#define VERSION_REVISION                1
+#define VERSION_REVISION                2
 
 // global ------------------------------------------------------
 
@@ -120,6 +120,8 @@
 #define YSF_KEEPALIVE_TIMEOUT           (YSF_KEEPALIVE_PERIOD*10)           // in seconds
 #define YSF_DEFAULT_NODE_TX_FREQ        437000000                           // in Hz
 #define YSF_DEFAULT_NODE_RX_FREQ        437000000                           // in Hz
+#define YSF_AUTOLINK_ENABLE             0                                   // 1 = enable, 0 = disable auto-link
+#define YSF_AUTOLINK_MODULE             'B'                                 // module for client to auto-link to
 
 
 // Transcoder server --------------------------------------------
