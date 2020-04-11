@@ -1,9 +1,9 @@
 //
-//  csemaphore.h
+//  cg3client.h
 //  xlxd
 //
-//  Created by Jean-Luc Deltombe (LX3JL) on 16/04/2017.
-//  Copyright © 2015 Jean-Luc Deltombe (LX3JL). All rights reserved.
+//  Created by Marius Petrescu (YO2LOJ) on 03/06/2019.
+//  Copyright © 2019 Marius Petrescu (YO2LOJ). All rights reserved.
 //
 // ----------------------------------------------------------------------------
 //    This file is part of xlxd.
@@ -19,38 +19,44 @@
 //    GNU General Public License for more details.
 //
 //    You should have received a copy of the GNU General Public License
-//    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+//    along with Foobar.  If not, see <http://www.gnu.org/licenses/>. 
 // ----------------------------------------------------------------------------
 
-#ifndef csemaphore_h
-#define csemaphore_h
+#ifndef cg3client_h
+#define cg3client_h
+
+#include "cclient.h"
+
+////////////////////////////////////////////////////////////////////////////////////////
+// define
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // class
 
-class CSemaphore
+class CG3Client : public CClient
 {
 public:
-    // constructor
-    CSemaphore();
+    // constructors
+    CG3Client();
+    CG3Client(const CCallsign &, const CIp &, char = ' ');
+    CG3Client(const CG3Client &);
     
     // destructor
-    virtual ~CSemaphore() {};
+    virtual ~CG3Client() {};
     
-    // operation
-    void Reset(void);
-    void Notify(void);
-    void Wait(void);
-    bool WaitFor(uint);
+    // identity
+    int GetProtocol(void) const                 { return PROTOCOL_G3; }
+    const char *GetProtocolName(void) const     { return "Terminal/AP"; }
+    int GetCodec(void) const                    { return CODEC_AMBEPLUS; }
+    bool IsNode(void) const                     { return true; }
     
+    // status
+    bool IsAlive(void) const;
+
 protected:
     // data
-    std::mutex              m_Mutex;
-    std::condition_variable m_Condition;
-    size_t                  m_Count;
-
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////
-#endif /* csemaphore_h */
+#endif /* cg3client_h */

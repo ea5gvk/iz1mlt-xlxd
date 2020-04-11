@@ -1,9 +1,9 @@
 //
-//  csemaphore.h
+//  cudpmsgsocket.h
 //  xlxd
 //
-//  Created by Jean-Luc Deltombe (LX3JL) on 16/04/2017.
-//  Copyright © 2015 Jean-Luc Deltombe (LX3JL). All rights reserved.
+//  Created by Marius Petrescu (YO2LOJ) on 22/02/2020.
+//  Copyright © 2020 Marius Petrescu (YO2LOJ). All rights reserved.
 //
 // ----------------------------------------------------------------------------
 //    This file is part of xlxd.
@@ -19,38 +19,38 @@
 //    GNU General Public License for more details.
 //
 //    You should have received a copy of the GNU General Public License
-//    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+//    along with Foobar.  If not, see <http://www.gnu.org/licenses/>. 
 // ----------------------------------------------------------------------------
 
-#ifndef csemaphore_h
-#define csemaphore_h
+// Description:
+//    Extension of the CUdpSocket class to allow retrieving
+//    the local target IP for a G3 Terminal mode config request
 
+#ifndef cudpmsgsocket_h
+#define cudpmsgsocket_h
+
+#include "cudpsocket.h"
+
+#define UDP_MSG_BUFFER_LENMAX       1024
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // class
 
-class CSemaphore
+class CUdpMsgSocket : public CUdpSocket
 {
 public:
-    // constructor
-    CSemaphore();
-    
-    // destructor
-    virtual ~CSemaphore() {};
-    
-    // operation
-    void Reset(void);
-    void Notify(void);
-    void Wait(void);
-    bool WaitFor(uint);
-    
+    // open
+    bool Open(uint16);
+
+    // read
+    int Receive(CBuffer *, CIp *, int);
+
+    struct in_addr *GetLocalAddr(void)   { return &m_LocalAddr; }
+
 protected:
     // data
-    std::mutex              m_Mutex;
-    std::condition_variable m_Condition;
-    size_t                  m_Count;
-
+    struct in_addr      m_LocalAddr;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////
-#endif /* csemaphore_h */
+#endif /* cudpmsgsocket_h */

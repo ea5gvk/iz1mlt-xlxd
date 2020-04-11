@@ -123,7 +123,7 @@ int main(int argc, const char * argv[])
     for (;;)
     {
         // sleep 60 seconds
-        CTimePoint::TaskSleepFor(60000);  
+        CTimePoint::TaskSleepFor(60000);
 #ifdef DEBUG_DUMPFILE
         g_Reflector.m_DebugFile.close();
 #endif

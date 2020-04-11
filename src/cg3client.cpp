@@ -1,9 +1,9 @@
 //
-//  csemaphore.h
+//  cg3client.cpp
 //  xlxd
 //
-//  Created by Jean-Luc Deltombe (LX3JL) on 16/04/2017.
-//  Copyright © 2015 Jean-Luc Deltombe (LX3JL). All rights reserved.
+//  Created by Marius Petrescu (YO2LOJ) on 03/06/2019.
+//  Copyright © 2019 Marius Petrescu (YO2LOJ). All rights reserved.
 //
 // ----------------------------------------------------------------------------
 //    This file is part of xlxd.
@@ -19,38 +19,36 @@
 //    GNU General Public License for more details.
 //
 //    You should have received a copy of the GNU General Public License
-//    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+//    along with Foobar.  If not, see <http://www.gnu.org/licenses/>. 
 // ----------------------------------------------------------------------------
 
-#ifndef csemaphore_h
-#define csemaphore_h
+#include "main.h"
+#include "cg3client.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-// class
+// constructors
 
-class CSemaphore
+CG3Client::CG3Client()
 {
-public:
-    // constructor
-    CSemaphore();
-    
-    // destructor
-    virtual ~CSemaphore() {};
-    
-    // operation
-    void Reset(void);
-    void Notify(void);
-    void Wait(void);
-    bool WaitFor(uint);
-    
-protected:
-    // data
-    std::mutex              m_Mutex;
-    std::condition_variable m_Condition;
-    size_t                  m_Count;
+}
 
-};
+CG3Client::CG3Client(const CCallsign &callsign, const CIp &ip, char reflectorModule)
+    : CClient(callsign, ip, reflectorModule)
+{
+
+}
+
+CG3Client::CG3Client(const CG3Client &client)
+    : CClient(client)
+{
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////
-#endif /* csemaphore_h */
+// status
+
+bool CG3Client::IsAlive(void) const
+{
+    return (m_LastKeepaliveTime.DurationSinceNow() < G3_KEEPALIVE_TIMEOUT);
+}
+

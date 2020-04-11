@@ -175,8 +175,8 @@ void CYsfProtocol::Task(void)
                     
                     // create the client
                     CYsfClient *newclient = new CYsfClient(Callsign, Ip);
-					
-					// aautolink, if enabled
+                    
+                    // aautolink, if enabled
                     #if YSF_AUTOLINK_ENABLE
                         newclient->SetReflectorModule(YSF_AUTOLINK_MODULE);
                     #endif
@@ -200,7 +200,7 @@ void CYsfProtocol::Task(void)
             // and post it to hadler's queue
             m_WiresxCmdHandler.GetCmdQueue()->push(WiresxCmd);
             m_WiresxCmdHandler.ReleaseCmdQueue();
-		}
+        }
         else if ( IsValidServerStatusPacket(Buffer) )
         {
             std::cout << "YSF server status enquiry from " << Ip   << std::endl;
@@ -939,7 +939,7 @@ bool CYsfProtocol::IsValidwirexPacket(const CBuffer &Buffer, CYSFFICH *Fich, CCa
 bool CYsfProtocol::IsValidServerStatusPacket(const CBuffer &Buffer) const
 {
     uint8 tag[] = { 'Y','S','F','S' };
-
+     
     return ( (Buffer.size() >= 4) && (Buffer.Compare(tag, sizeof(tag)) == 0) );
 }
 
@@ -950,7 +950,7 @@ bool CYsfProtocol::EncodeServerStatusPacket(CBuffer *Buffer) const
     uint8 tag[] = { 'Y','S','F','S' };
     uint8 description[] = { 'X','L','X',' ','r','e','f','l','e','c','t','o','r',' ' };
     uint8 callsign[16];
-
+     
     // tag
     Buffer->Set(tag, sizeof(tag));
     // hash
@@ -969,7 +969,7 @@ bool CYsfProtocol::EncodeServerStatusPacket(CBuffer *Buffer) const
     g_Reflector.ReleaseClients();
     ::sprintf(sz, "%03u", count);
     Buffer->Append((uint8 *)sz, 3);
-
+    
     // done
     return true;
 }
