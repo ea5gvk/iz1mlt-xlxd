@@ -60,7 +60,7 @@
 // Transcoder server --------------------------------------------
 #define TRANSCODER_PORT                 10100                               // UDP port
 #define TRANSCODER_KEEPALIVE_PERIOD     3                                   // in seconds
-#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD + 3)   // in seconds
+#define TRANSCODER_KEEPALIVE_TIMEOUT    (TRANSCODER_KEEPALIVE_PERIOD + 1)   // in seconds
 
 // Codecs -------------------------------------------------------
 #define CODEC_NONE                      0
@@ -77,7 +77,7 @@
 #define USE_BANDPASSFILTER              1
 
 // Timeouts -----------------------------------------------------
-#define STREAM_ACTIVITY_TIMEOUT         3                                   // in seconds
+#define STREAM_ACTIVITY_TIMEOUT         (TRANSCODER_KEEPALIVE_PERIOD + 1)   // in seconds
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
