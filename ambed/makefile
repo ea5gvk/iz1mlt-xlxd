@@ -1,6 +1,6 @@
-CXX=g++
-CFLAGS=-Os -Wall -std=c++11 -pthread
-LDFLAGS=-Os -Wall -std=c++11 -pthread 
+CC=g++
+CFLAGS=-c -std=c++11 -pthread
+LDFLAGS=-std=c++11 -pthread 
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=ambed
@@ -8,13 +8,13 @@ EXECUTABLE=ambed
 all: $(SOURCES) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CXX) $(LDFLAGS) $(OBJECTS) -lftd2xx -Wl,-rpath,/usr/local/lib -o $@
+	$(CC) $(LDFLAGS) $(OBJECTS) -lftd2xx -Wl,-rpath,/usr/local/lib -o $@
 
 .cpp.o:
-	$(CXX) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	$(RM) $(EXECUTABLE) *.o *.d *.bak
+	$(RM) $(EXECUTABLE) *.o
 
 install:
 	mkdir -p /ambed

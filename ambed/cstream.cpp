@@ -79,7 +79,7 @@ CStream::~CStream()
         delete m_pThread;
         m_pThread = NULL;
     }
-	
+    
     // then close everything
     m_Socket.Close();
     if ( m_VocodecChannel != NULL )
@@ -144,14 +144,15 @@ void CStream::Close(void)
         delete m_pThread;
         m_pThread = NULL;
     }
-    
+
     // then close everything
     m_Socket.Close();
     if ( m_VocodecChannel != NULL )
     {
         m_VocodecChannel->Close();
     }
-	
+    
+    
     // report
     std::cout << m_iLostPackets << " of " << m_iTotalPackets << " packets lost" << std::endl;
 }
