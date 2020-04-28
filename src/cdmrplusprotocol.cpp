@@ -509,8 +509,8 @@ bool CDmrplusProtocol::IsValidDvFramePacket(const CIp &Ip, const CBuffer &Buffer
             //uint32 uiSrcId = *(uint32 *)(&Buffer.data()[68]) & 0x00FFFFFF;
         
             // crack payload
-            uint8 dmrframe[33];
-            uint8 dmr3ambe[27];
+            uint8 dmrframe[34];
+            uint8 dmr3ambe[28];
             uint8 dmrambe[9];
             uint8 dmrsync[7];
             // get the 33 bytes ambe
