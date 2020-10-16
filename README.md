@@ -1,3 +1,16 @@
+# INSTRUCCIONES A TENER EN CUENTA EN RELACION CON EL ORIGINAL, ESTE ESTA ADAPTADO PARA FUNCIONAR CON AMBE BAOFARM
+
+para compilarlo como siempre en /src, make clean y depues make, yo no he hecho make install y entonces en este caso hay que tener en cuenta las nuevas rutas de este version de xlx
+CREAR directorios
+mkdir -p /var/log/xlxd  ---> AQUI SE GENERARA archivos .xml
+mkdir -p /etc/xlxd      ---> AQUI VAN todos nuestros xlxd.whitelist, blacklist, interlink, xlxd.terminal
+
+EN EL DASHBOARD HAY QUE CORREGIR TAMBIEN ESTAS RUTAS.
+var/www/db/pgs/config.inc.php
+
+DESPUES LEVANTAR EL SERVICIO, ACORDAROS DE MIRAR EL tail -f /var/log/syslog 
+ASI COMPROBAIS SI HAY ALGUNA FALLO MAS.
+
 # Copyright
 
 © 2016 Luc Engelmann LX1IQ
